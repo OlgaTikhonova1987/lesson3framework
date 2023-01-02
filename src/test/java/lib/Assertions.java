@@ -44,5 +44,11 @@ public class Assertions {
         }
 
     }
+    public static void assertJsonHasNoFields(Response Response, String[] unexpectedFildINames) {
+        for (String unexpectedFieldName : unexpectedFildINames) {
+            Assertions.assertJsonHasNoField(Response, unexpectedFieldName);
+        }
+
+    }
 
 }

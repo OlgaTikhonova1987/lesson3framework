@@ -43,5 +43,4 @@ public Response makeGetRequest(String url, String token, String cookie) {
                 .post(url)
                 .andReturn();
     }
-
 }
