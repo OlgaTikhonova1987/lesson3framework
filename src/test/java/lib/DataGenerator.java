@@ -1,5 +1,7 @@
 package lib;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +18,7 @@ public class DataGenerator {
     public  static String getRandomValueWithSpecialLength(int length){
         String data = "";
         for (int i = 0; i<length; i++) {
-            data = data + "a";
+            data = data +  RandomStringUtils.randomAlphabetic(1).toLowerCase();
         }
 
         return data;

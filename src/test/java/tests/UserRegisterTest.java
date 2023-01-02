@@ -53,6 +53,7 @@ public class UserRegisterTest extends BaseTestCase {
     @Test
     public void testCreateUserWithShortName() {
         String firstname = DataGenerator.getRandomValueWithSpecialLength(1);
+
         Map<String, String> userData = new HashMap<>();
         userData.put("firstName", firstname);
         userData = DataGenerator.getRegistrationData(userData);
@@ -67,6 +68,7 @@ public class UserRegisterTest extends BaseTestCase {
     @Test
     public void testCreateUserWithLongName() {
         String firstname = DataGenerator.getRandomValueWithSpecialLength(251);
+
         Map<String, String> userData = new HashMap<>();
         userData.put("firstName", firstname);
         userData = DataGenerator.getRegistrationData(userData);
