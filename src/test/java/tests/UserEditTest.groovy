@@ -66,10 +66,10 @@ class UserEditTest extends BaseTestCase {
         Assertions.assertJsonByName(responseUserData, "firstName", newName);
 
     }
-
-    @Test
     @Description("This test check updating of user without authorising HW17")
     @DisplayName("Test negative updating of user")
+    @Test
+
     public void testEditUnAuthorised() {
 
         //edit
@@ -82,10 +82,10 @@ class UserEditTest extends BaseTestCase {
 
         Assertions.assertResponseTextEquals(responseEditUser, "Auth token not supplied");
     }
-
-    @Test
     @Description("This test check updating of user with other user HW17")
     @DisplayName("Test negative updating of user")
+    @Test
+
     public void testEditWithOtherUser() {
         //Login
         Map<String, String> userData = new HashMap<>();
@@ -104,9 +104,10 @@ class UserEditTest extends BaseTestCase {
                         this.getCookie(responseGetAuth, "auth_sid"),  editData);
         Assertions.assertResponseTextEquals(responseEditUser, "Please, do not edit test users with ID 1, 2, 3, 4 or 5.");
     }
-    @Test
     @Description("This test check updating of user with wrong email HW17")
     @DisplayName("Test negative updating of user")
+    @Test
+
     public void testEditWithWrongEmail() {
         //Generate user
         Map<String, String> userData = DataGenerator.getRegistrationData();
@@ -131,9 +132,9 @@ class UserEditTest extends BaseTestCase {
         Assertions.assertResponseTextEquals(responseEditUser, "Invalid email format");
 
     }
-    @Test
     @Description("This test check updating of user with short firstname HW17")
     @DisplayName("Test negative updating of user")
+    @Test
     public void testEditWithShortFirstname() {
         //Generate user
         Map<String, String> userData = DataGenerator.getRegistrationData();
