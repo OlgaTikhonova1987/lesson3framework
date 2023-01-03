@@ -43,4 +43,23 @@ public Response makeGetRequest(String url, String token, String cookie) {
                 .post(url)
                 .andReturn();
     }
+    @Step("Make a PUT-request")
+    public Response makePutRequest(String url, Map<String, String> editData) {
+        return given()
+                .filter(new AllureRestAssured())
+                .body(editData)
+                .put(url)
+                .andReturn();
+    }
+    @Step("Make a PUT-request with token and auth cookie")
+    public Response makePutRequestWithTokenAndCookie(String url, String token, String cookie, Map<String, String> editData) {
+        return given()
+                .filter(new AllureRestAssured())
+                .body(editData)
+                .header(new Header("x-csrf-token", token))
+                .cookie("auth_sid", cookie)
+                .put(url)
+                .andReturn();
+    }
+
 }
