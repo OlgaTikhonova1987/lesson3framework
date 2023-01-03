@@ -18,7 +18,7 @@ import java.util.Map;
 @Feature("Get Information")
 public class UserGetTest extends BaseTestCase {
     private final ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
-    @Description("Trying to get information about not authorized user by other user")
+    @Description("Trying to get information about not authorized user by other user HW EX16")
     @DisplayName("Information about not authorized user")
     @Test
     public void testGetUserDetailsAuthAsOtherUser() {
