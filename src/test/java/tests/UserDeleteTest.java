@@ -1,7 +1,5 @@
 package tests;
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.restassured.path.json.JsonPath;
 import lib.ApiCoreRequests;
 import lib.DataGenerator;
@@ -13,34 +11,16 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-@Epic("User update cases")
-@Feature("Update")
+@Epic("Users")
+@Feature("User deletion")
 public class UserDeleteTest extends BaseTestCase{
     private final ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
-    @Description("This test check updating of user with wrong email HW18")
-    @DisplayName("Test negative updating of user")
-    @Test
-
-    public void testEditWithWrongEmail() {
-        //Login
-        Map<String, String> userData = new HashMap<>();
-        userData.put("email", "vinkotov@example.com");
-        userData.put("password", "1234");
-        Response responseGetAuth = apiCoreRequests
-                .makePostRequest("https://playground.learnqa.ru/api/user/login", userData);
-        String header = this.getHeader(responseGetAuth,"x-csrf-token");
-        String cookie = this.getCookie(responseGetAuth, "auth_sid");
-
-        //delete
-        Response responseDeleteUser = apiCoreRequests
-                .makeDeleteRequest("https://playground.learnqa.ru/api/user/2", header, cookie);
-
-
-        Assertions.assertResponseTextEquals(responseDeleteUser, "Please, do not delete test users with ID 1, 2, 3, 4 or 5.");
-    }
     @Description("This test check user delete HW18")
     @DisplayName("Test positive delete of user")
     @Test
+    @Issue(value = "Ex18")
+    @Owner(value ="Tikhonova")
+    @Severity(value = SeverityLevel.CRITICAL)
 
     public void testDeleteUser() {
         //Generate user
@@ -66,9 +46,37 @@ public class UserDeleteTest extends BaseTestCase{
                 .makeGetRequest("https://playground.learnqa.ru/api/user/"  + userId, this.getHeader(responseGetAuth, "x-csrf-token"),this.getCookie(responseGetAuth, "auth_sid"));
         Assertions.assertResponseTextEquals(responseUserData, "User not found");
     }
+    @Description("This test check updating of user with wrong email HW18")
+    @DisplayName("Test negative updating of user")
+    @Test
+    @Issue(value = "Ex18")
+    @Owner(value ="Tikhonova")
+    @Severity(value = SeverityLevel.MINOR)
+
+    public void testEditWithWrongEmail() {
+        //Login
+        Map<String, String> userData = new HashMap<>();
+        userData.put("email", "vinkotov@example.com");
+        userData.put("password", "1234");
+        Response responseGetAuth = apiCoreRequests
+                .makePostRequest("https://playground.learnqa.ru/api/user/login", userData);
+        String header = this.getHeader(responseGetAuth,"x-csrf-token");
+        String cookie = this.getCookie(responseGetAuth, "auth_sid");
+
+        //delete
+        Response responseDeleteUser = apiCoreRequests
+                .makeDeleteRequest("https://playground.learnqa.ru/api/user/2", header, cookie);
+
+
+        Assertions.assertResponseTextEquals(responseDeleteUser, "Please, do not delete test users with ID 1, 2, 3, 4 or 5.");
+    }
+
     @Description("This test check user deletion with other user HW18")
     @DisplayName("Test negative delete of user")
     @Test
+    @Issue(value = "Ex18")
+    @Owner(value ="Tikhonova")
+    @Severity(value = SeverityLevel.MINOR)
 
     public void testDeleteUserWithAnother() {
         //Generate user

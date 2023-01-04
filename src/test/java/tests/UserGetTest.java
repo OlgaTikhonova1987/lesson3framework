@@ -1,8 +1,6 @@
 package tests;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import lib.ApiCoreRequests;
@@ -14,13 +12,16 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-@Epic("Getting Information cases")
-@Feature("Get Information")
+@Epic("Users")
+@Feature("User Get Information")
 public class UserGetTest extends BaseTestCase {
     private final ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
     @Description("Trying to get information about not authorized user by other user HW EX16")
     @DisplayName("Information about not authorized user")
     @Test
+    @Issue(value = "Ex16")
+    @Owner(value ="Tikhonova")
+    @Severity(value = SeverityLevel.MINOR)
     public void testGetUserDetailsAuthAsOtherUser() {
 
         Map<String, String> authData = new HashMap<>();
@@ -43,6 +44,9 @@ public class UserGetTest extends BaseTestCase {
     @Description("Try to get information with not authorized user")
     @DisplayName("testGetUserDataNotAuth")
     @Test
+    @Issue(value = "Ex16")
+    @Owner(value ="Tikhonova")
+    @Severity(value = SeverityLevel.MINOR)
     public void testGetUserDataNotAuth() {
         Response responseUserData = RestAssured
                 .get("https://playground.learnqa.ru/api/user/2")
@@ -55,6 +59,9 @@ public class UserGetTest extends BaseTestCase {
     @Description("Try to get information about authorized other user")
     @DisplayName("testGetUserDetailsAuthAsSomeUser")
     @Test
+    @Issue(value = "Ex16")
+    @Owner(value ="Tikhonova")
+    @Severity(value = SeverityLevel.MINOR)
     public void testGetUserDetailsAuthAsSomeUser() {
         Map<String, String> authData = new HashMap<>();
         authData.put("email", "vinkotov@example.com");

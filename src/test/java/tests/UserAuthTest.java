@@ -1,8 +1,6 @@
 package tests;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.restassured.response.Response;
 import lib.ApiCoreRequests;
 import lib.Assertions;
@@ -15,8 +13,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashMap;
 import java.util.Map;
 
-@Epic("Authorisation cases")
-@Feature("Authorisation")
+@Epic("Users")
+@Feature("User Authorisation")
 public class UserAuthTest extends BaseTestCase  {
     String cookie;
     String header;
@@ -40,6 +38,9 @@ public class UserAuthTest extends BaseTestCase  {
     @Description("This test successfully authorize user by email and password")
     @DisplayName("Test positive auth user")
     @Test
+    @Issue(value = "Lec3")
+    @Owner(value ="Tikhonova")
+    @Severity(value = SeverityLevel.BLOCKER)
 
     public void testAuthUser() {
 
@@ -53,6 +54,9 @@ public class UserAuthTest extends BaseTestCase  {
     @Description("This Test checks auth status w/o sending auth cookie or token")
     @ParameterizedTest
     @ValueSource(strings = {"cookie", "headers"})
+    @Issue(value = "Lec3")
+    @Owner(value ="Tikhonova")
+    @Severity(value = SeverityLevel.NORMAL)
     public void testNegativeAuthUser(String condition) {
         if (condition.equals("cookie")) {
             Response responseForCheck = apiCoreRequests.makeGetRequestWithCookie("https://playground.learnqa.ru/api/user/auth", this.cookie );

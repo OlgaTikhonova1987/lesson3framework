@@ -1,4 +1,10 @@
 package tests
+
+import io.qameta.allure.Issue
+import io.qameta.allure.Owner
+import io.qameta.allure.Severity
+import io.qameta.allure.SeverityLevel
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import io.qameta.allure.Description
 import io.qameta.allure.Epic
@@ -13,8 +19,8 @@ import lib.BaseTestCase
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@Epic("User update cases")
-@Feature("Update")
+@Epic("Users")
+@Feature("User Update")
 class UserEditTest extends BaseTestCase {
 
     private final ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
@@ -22,6 +28,9 @@ class UserEditTest extends BaseTestCase {
     @Description("This test check updating of user")
     @DisplayName("Test positive updating of user")
     @Test
+    @Issue(value = "Ex17")
+    @Owner(value ="Tikhonova")
+    @Severity(value = SeverityLevel.CRITICAL)
     public void testEditJustCreatedTest() {
         //Generate user
         Map<String, String> userData = DataGenerator.getRegistrationData();
@@ -69,7 +78,9 @@ class UserEditTest extends BaseTestCase {
     @Description("This test check updating of user without authorising HW17")
     @DisplayName("Test negative updating of user")
     @Test
-
+    @Issue(value = "Ex17")
+    @Owner(value ="Tikhonova")
+    @Severity(value = SeverityLevel.NORMAL)
     public void testEditUnAuthorised() {
 
         //edit
@@ -85,7 +96,9 @@ class UserEditTest extends BaseTestCase {
     @Description("This test check updating of user with other user HW17")
     @DisplayName("Test negative updating of user")
     @Test
-
+    @Issue(value = "Ex17")
+    @Owner(value ="Tikhonova")
+    @Severity(value = SeverityLevel.NORMAL)
     public void testEditWithOtherUser() {
         //Login
         Map<String, String> userData = new HashMap<>();
@@ -107,7 +120,9 @@ class UserEditTest extends BaseTestCase {
     @Description("This test check updating of user with wrong email HW17")
     @DisplayName("Test negative updating of user")
     @Test
-
+    @Issue(value = "Ex17")
+    @Owner(value ="Tikhonova")
+    @Severity(value = SeverityLevel.NORMAL)
     public void testEditWithWrongEmail() {
         //Generate user
         Map<String, String> userData = DataGenerator.getRegistrationData();
@@ -135,6 +150,9 @@ class UserEditTest extends BaseTestCase {
     @Description("This test check updating of user with short firstname HW17")
     @DisplayName("Test negative updating of user")
     @Test
+    @Issue(value = "Ex17")
+    @Owner(value ="Tikhonova")
+    @Severity(value = SeverityLevel.NORMAL)
     public void testEditWithShortFirstname() {
         //Generate user
         Map<String, String> userData = DataGenerator.getRegistrationData();
